@@ -18,6 +18,7 @@ def show_cars(cars)
   car = cars[input]
   if car
     show_data(car)
+    passenger_capacity(car)
   else
     puts "該当する番号はありません。"
   end
@@ -37,6 +38,17 @@ end
 def calculate_fuel_consumption(car, distance)
   fuel_consumption = distance / car[:fuel_economy]
   puts "その目的地までは、ガソリンを#{fuel_consumption.round(1)}L消費します。"
+end
+
+def passenger_capacity(car)
+  puts "乗車予定人数を入力してください。"
+  input_passenger = gets.to_i
+
+  if input_passenger > car[:capacity]
+    puts "#{input_passenger - car[:capacity]}人の定員オーバーです"
+  else
+    puts "あと#{ car[:capacity] - input_passenger}人乗車が可能です"
+  end
 end
 
 cars = []
